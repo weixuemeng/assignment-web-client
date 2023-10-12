@@ -120,9 +120,6 @@ def post_header_check(self):
     self.end_headers()
     self.wfile.write(bytes(json.dumps(errors),"utf-8"))
 
-
-
-
 class TestHTTPClient(unittest.TestCase):
     httpd = None
     running = False
@@ -174,10 +171,10 @@ class TestHTTPClient(unittest.TestCase):
     def testGET(self):
         '''Test HTTP GET'''
         MyHTTPHandler.get = echo_path_get
-        http = httpclass.HTTPClient()
+        http = httpclass.HTTPClient() # we write the class 
         path = "abcdef/gjkd/dsadas"
         url = "http://%s:%d/%s" % (BASEHOST,BASEPORT, path)
-        req = http.GET( url )
+        req = http.GET( url )  # call the function
         self.assertTrue(req != None, "None Returned!")
         self.assertTrue(req.code == 200)
         self.assertTrue(req.body.find(path)>=0, "Data: [%s] " % req.body)
@@ -206,7 +203,7 @@ class TestHTTPClient(unittest.TestCase):
 
         
         
-    # consider disabling this test until everything else works
+    # # consider disabling this test until everything else works
     def testInternetGets(self):
         '''Test HTTP Get in the wild, these webservers are far less
            forgiving'''
@@ -252,6 +249,8 @@ class TestHTTPClient(unittest.TestCase):
         outargs = json.loads(req.body)
         print(outargs.__class__)
         for key in args:
+            print(args[key] )
+            print( outargs[key][0])
             self.assertTrue(args[key] == outargs[key][0], "Key [%s] not found" % key)
         for key in outargs:
             self.assertTrue(args[key] == outargs[key][0], "Key [%s] not found" % key)
