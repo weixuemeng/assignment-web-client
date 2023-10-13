@@ -85,9 +85,7 @@ class HTTPClient(object):
 
         # Parse the URL
         parsed_url = urlparse(url)
-
         
-
         # Extract the port number
         port = parsed_url.port
         host = parsed_url.hostname
@@ -121,6 +119,10 @@ class HTTPClient(object):
     def POST(self, url, args=None):
         code = 500
         body = ""
+
+        if not url.startswith("http:"):
+            print("cannot handle https")
+            quit()
 
         # Parse the URL
         parsed_url = urlparse(url)
