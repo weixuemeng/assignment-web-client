@@ -45,7 +45,6 @@ class HTTPClient(object):
         # data is the response
         # data_str = data.decode('utf-8')
         code = int(data.split('\r\n')[0].split(" ")[1])  # status code
-        print("code: ", code)
         return code
 
     def get_headers(self,data):
@@ -54,7 +53,7 @@ class HTTPClient(object):
     def get_body(self, data):
         # data_str = data.decode('utf-8')
         body = data.split('\r\n\r\n')[1]  # body
-        print("body: ",body)
+        print("body: ",body) # print body
         return body
     
     def sendall(self, data):
@@ -78,7 +77,6 @@ class HTTPClient(object):
     def GET(self, url, args=None):
         code = 500
         body = ""
-        print("---------------------GET---------------------")
         # Parse the URL
         parsed_url = urlparse(url)
         # Extract the port number
@@ -111,7 +109,6 @@ class HTTPClient(object):
     def POST(self, url, args=None):
         code = 500
         body = ""
-        print("---------------------POST---------------------")
 
         # Parse the URL
         parsed_url = urlparse(url)

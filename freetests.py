@@ -249,8 +249,6 @@ class TestHTTPClient(unittest.TestCase):
         outargs = json.loads(req.body)
         print(outargs.__class__)
         for key in args:
-            print(args[key] )
-            print( outargs[key][0])
             self.assertTrue(args[key] == outargs[key][0], "Key [%s] not found" % key)
         for key in outargs:
             self.assertTrue(args[key] == outargs[key][0], "Key [%s] not found" % key)
