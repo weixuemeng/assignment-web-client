@@ -78,6 +78,7 @@ class HTTPClient(object):
     def GET(self, url, args=None):
         code = 500
         body = ""
+        print("---------------------GET---------------------")
         # Parse the URL
         parsed_url = urlparse(url)
         # Extract the port number
@@ -110,6 +111,7 @@ class HTTPClient(object):
     def POST(self, url, args=None):
         code = 500
         body = ""
+        print("---------------------POST---------------------")
 
         # Parse the URL
         parsed_url = urlparse(url)
