@@ -77,8 +77,17 @@ class HTTPClient(object):
     def GET(self, url, args=None):
         code = 500
         body = ""
+        
+        # check correct http
+        if not url.startswith("http:"):
+            print("cannot handle https")
+            quit()
+
         # Parse the URL
         parsed_url = urlparse(url)
+
+        
+
         # Extract the port number
         port = parsed_url.port
         host = parsed_url.hostname
@@ -88,6 +97,9 @@ class HTTPClient(object):
             port = 80
         if not path:
             path = "/"
+        print("url: ", url)
+    
+        
  
         request = b"GET "+path.encode()+b" HTTP/1.1\nHost: "+host.encode()+b" Connection: close\n\n"  # request
         request_str = f"GET {path} HTTP/1.1\r\n"\
