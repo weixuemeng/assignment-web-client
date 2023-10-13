@@ -95,9 +95,6 @@ class HTTPClient(object):
             port = 80
         if not path:
             path = "/"
-        print("url: ", url)
-    
-        
  
         request = b"GET "+path.encode()+b" HTTP/1.1\nHost: "+host.encode()+b" Connection: close\n\n"  # request
         request_str = f"GET {path} HTTP/1.1\r\n"\
